@@ -25,4 +25,63 @@ export class HomePage extends BasePage {
     return cy.get("button[aria-label='Go to user profile']");
   }
  
+  static get searchIcon() {
+    return cy.get('#searchQuery');
+  }
+
+  static get searchInput() {
+    return cy.get('#mat-input-1');
+  }
+
+  static get productCards() {
+    return cy.get('mat-card');
+  }
+
+  static get productCardsMen() {
+    return cy.get('mat-dialog-content');
+  }
+
+  static get productMenuCloseButton() {
+    return cy.get('button[aria-label="Close Dialog"]');
+  }
+
+  static get reviewExpandButton() {
+    return cy.get('mat-expansion-panel-header');
+  }
+
+  static get reviewInput() {
+    return cy.get('[aria-label="Text field to review a product"]');
+  }
+
+  static get reviewSubmitButton() {
+    return cy.get('#submitButton');
+  }
+
+  static get itemsPerPageMenu() {
+    return cy.get('div mat-form-field');
+  }
+
+  static get itemsPerPageMenuOptions() {
+    return cy.get('#mat-select-0-panel');
+  }
+
+  static get addToBasketButton() {
+    return cy.get('button[aria-label="Add to Basket"]');
+  }
+
+  static get yourBasketButton() {
+    return cy.get('button[aria-label="Show the shopping cart"]');
+  }
+
+  static get ordersAndPaymentButton() {
+    return cy.get('button[aria-label="Show Orders and Payment Menu"]');
+  }
+
+  static get savedAddressesButton() {
+    return cy.get('button[aria-label="Go to saved address page"]');
+  }
+
+  static get myPaymentMethodsButton() {
+    return cy.get('button[aria-label="Go to saved payment methods page"]');
+  }
 }

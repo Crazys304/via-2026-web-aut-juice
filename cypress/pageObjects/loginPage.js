@@ -8,4 +8,20 @@ export class LoginPage extends BasePage {
   static get elementName() {
     return cy.get("elementSelector");
   }
+
+  static get emailField() {
+    return cy.get("#email");
+  }
+
+  static get passwordField() {
+    return cy.get("#password");
+  }
+
+  static get loginbutt() {
+    return cy.get("#loginButton");
+  }
+
+  static get notYetCustomer() {
+    return cy.get("[href='#/register']");
+  }
 }

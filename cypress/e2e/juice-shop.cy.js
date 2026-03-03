@@ -1,4 +1,6 @@
-import { HomePage } from "../pageObjects/HomePage";
+import { HomePage } from "../pageObjects/homePage";
+import { LoginPage } from "../pageObjects/loginPage";
+import { RegPage } from "../pageObjects/regPage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -10,31 +12,55 @@ describe("Juice-shop scenarios", () => {
 
     it("Login", () => {
       // Click Account button
+      HomePage.accountButton.click();
       // Click Login button
+      HomePage.loginButton.click();
       // Set email value to "demo"
+      LoginPage.emailField.clear().type("demo");
       // Set password value to "demo"
+      LoginPage.passwordField.clear().type("demo");
       // Click Log in
+      LoginPage.loginbutt.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that "demo" account name appears in the menu section
+      HomePage.userProfileButton.should("contain", "demo");
     });
 
-    it("Registration", () => {
+    it.only("Registration", () => {
       // Click Account button
+      HomePage.accountButton.click();
       // Login button
+      HomePage.loginButton.click();
       // Click "Not yet a customer?"
+      LoginPage.notYetCustomer.click();
       // Find - how to generate random number in JS
+      const email = `email_${Math.floor(Math.random() * 10000)}@ebox.com`;
+      const password = 'randomPass12+-3';
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
+      RegPage.emailField.type(email);
       // Fill in password field and repeat password field with same password
+      RegPage.passwordField.type(password);
+      RegPage.repeatPasswordField.type(password);
       // Click on Security Question menu
+      RegPage.securityQuestionMenu.click();
       // Select  "Name of your favorite pet?"
+      RegPage.dropdownMenuOptions.contains("Name of your favorite pet?").click();
       // Fill in answer
+      RegPage.securityAnswerField.type("Bobby");
       // Click Register button
+      RegPage.registerButton.click();
       // Set email value to previously created email
+      LoginPage.emailField.type(email);
       // Set password value to previously used password value
+      LoginPage.passwordField.type(password);
       // Click login button
+      LoginPage.loginbutt.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.userProfileButton.should('contain', email);
     });
   });
 
